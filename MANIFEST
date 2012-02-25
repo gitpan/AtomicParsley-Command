@@ -12,7 +12,12 @@ lib/AtomicParsley/Command/Tags.pm
 t/05_tags.t
 t/10_command.t
 t/author-critic.t
+t/author-pod-spell.t
+t/release-kwalitee.t
+t/release-no-smart-comments.t
+t/release-no-tabs.t
+t/release-pod-coverage.t
+t/release-pod-no404s.t
 t/release-pod-syntax.t
-t/requires_external.t
+t/release-portability.t
 t/resources/Family.mp4
-weaver.ini

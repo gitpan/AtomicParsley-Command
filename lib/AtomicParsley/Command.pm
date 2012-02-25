@@ -4,7 +4,7 @@ use warnings;
 
 package AtomicParsley::Command;
 {
-  $AtomicParsley::Command::VERSION = '1.112770';
+  $AtomicParsley::Command::VERSION = '1.120560';
 }
 
 # ABSTRACT: Interface to the Atomic Parsley command
@@ -228,7 +228,7 @@ AtomicParsley::Command - Interface to the Atomic Parsley command
 
 =head1 VERSION
 
-version 1.112770
+version 1.120560
 
 =head1 SYNOPSIS
 
@@ -323,7 +323,7 @@ Andrew Jones <andrew@arjones.co.uk>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Andrew Jones.
+This software is copyright (c) 2012 by Andrew Jones.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

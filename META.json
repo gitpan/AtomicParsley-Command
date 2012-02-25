@@ -4,7 +4,7 @@
       "Andrew Jones <andrew@arjones.co.uk>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640",
    "license" : [
       "perl_5"
    ],
@@ -25,6 +25,7 @@
             "File::Spec" : 0,
             "IPC::Cmd" : 0,
             "Object::Tiny" : 0,
+            "String::Util" : 0,
             "perl" : "5.010",
             "strict" : 0,
             "warnings" : 0
@@ -33,12 +34,10 @@
       "test" : {
          "requires" : {
             "English" : 0,
-            "Env::Path" : 0,
             "FindBin" : 0,
             "Test::Deep" : 0,
             "Test::Fatal" : 0,
-            "Test::More" : 0,
-            "Test::Most" : 0
+            "Test::More" : "0.88"
          }
       }
    },
@@ -54,6 +53,6 @@
          "web" : "https://github.com/andrewrjones/perl5-AtomicParsley-Command"
       }
    },
-   "version" : "1.112770"
+   "version" : "1.120560"
 }
 

@@ -13,12 +13,10 @@ my %WriteMakefileArgs = (
   "AUTHOR" => "Andrew Jones <andrew\@arjones.co.uk>",
   "BUILD_REQUIRES" => {
     "English" => 0,
-    "Env::Path" => 0,
     "FindBin" => 0,
     "Test::Deep" => 0,
     "Test::Fatal" => 0,
-    "Test::More" => 0,
-    "Test::Most" => 0
+    "Test::More" => "0.88"
   },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
@@ -32,10 +30,11 @@ my %WriteMakefileArgs = (
     "File::Spec" => 0,
     "IPC::Cmd" => 0,
     "Object::Tiny" => 0,
+    "String::Util" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.112770",
+  "VERSION" => "1.120560",
   "test" => {
     "TESTS" => "t/*.t"
   }

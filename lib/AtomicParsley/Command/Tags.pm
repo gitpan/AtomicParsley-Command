@@ -3,10 +3,12 @@ use warnings;
 
 package AtomicParsley::Command::Tags;
 {
-  $AtomicParsley::Command::Tags::VERSION = '1.112770';
+  $AtomicParsley::Command::Tags::VERSION = '1.120560';
 }
 
 # ABSTRACT: represent the mp4 metatags
+
+use String::Util 'hascontent';
 
 use Object::Tiny qw{
   artist
@@ -49,6 +51,12 @@ sub prepare {
     # loop through all accessors and generate parameters for AP
     my @out;
     while ( my ( $key, $value ) = each(%$self) ) {
+        next
+          unless defined $value
+              && ref($value) ne 'HASH'
+              && ref($value) ne 'ARRAY'
+              && hascontent($value);
+
         push @out, "--$key";
         push @out, $value;
     }
@@ -68,7 +76,7 @@ AtomicParsley::Command::Tags - represent the mp4 metatags
 
 =head1 VERSION
 
-version 1.112770
+version 1.120560
 
 =head1 SYNOPSIS
 
@@ -162,7 +170,7 @@ Andrew Jones <andrew@arjones.co.uk>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Andrew Jones.
+This software is copyright (c) 2012 by Andrew Jones.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
