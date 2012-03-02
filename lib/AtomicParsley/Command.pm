@@ -4,7 +4,7 @@ use warnings;
 
 package AtomicParsley::Command;
 {
-  $AtomicParsley::Command::VERSION = '1.120560';
+  $AtomicParsley::Command::VERSION = '1.120620';
 }
 
 # ABSTRACT: Interface to the Atomic Parsley command
@@ -228,7 +228,7 @@ AtomicParsley::Command - Interface to the Atomic Parsley command
 
 =head1 VERSION
 
-version 1.120560
+version 1.120620
 
 =head1 SYNOPSIS
 

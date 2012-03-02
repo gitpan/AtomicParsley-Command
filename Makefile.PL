@@ -30,11 +30,11 @@ my %WriteMakefileArgs = (
     "File::Spec" => 0,
     "IPC::Cmd" => 0,
     "Object::Tiny" => 0,
-    "String::Util" => 0,
+    "Params::Util" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.120560",
+  "VERSION" => "1.120620",
   "test" => {
     "TESTS" => "t/*.t"
   }

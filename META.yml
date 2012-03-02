@@ -22,7 +22,7 @@ requires:
   File::Spec: 0
   IPC::Cmd: 0
   Object::Tiny: 0
-  String::Util: 0
+  Params::Util: 0
   perl: 5.010
   strict: 0
   warnings: 0
@@ -30,4 +30,4 @@ resources:
   bugtracker: https://github.com/andrewrjones/perl5-AtomicParsley-Command/issues
   homepage: https://github.com/andrewrjones/perl5-AtomicParsley-Command
   repository: https://github.com/andrewrjones/perl5-AtomicParsley-Command.git
-version: 1.120560
+version: 1.120620
