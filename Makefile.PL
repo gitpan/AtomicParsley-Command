@@ -12,11 +12,12 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "Interface to the Atomic Parsley command",
   "AUTHOR" => "Andrew Jones <andrew\@arjones.co.uk>",
   "BUILD_REQUIRES" => {
-    "English" => 0,
+    "File::Find" => 0,
+    "File::Temp" => 0,
     "FindBin" => 0,
     "Test::Deep" => 0,
     "Test::Fatal" => 0,
-    "Test::More" => "0.88"
+    "Test::More" => 0
   },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
@@ -30,11 +31,10 @@ my %WriteMakefileArgs = (
     "File::Spec" => 0,
     "IPC::Cmd" => 0,
     "Object::Tiny" => 0,
-    "Params::Util" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.120620",
+  "VERSION" => "1.130410",
   "test" => {
     "TESTS" => "t/*.t"
   }

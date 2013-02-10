@@ -4,8 +4,9 @@ use strict;
 use warnings;
 
 use Test::Fatal;
-use Test::More tests => 13;
+use Test::More tests => 17;
 use FindBin qw($Bin);
+use File::Copy;
 
 use AtomicParsley::Command::Tags;
 
@@ -54,6 +55,7 @@ my $write_tags = AtomicParsley::Command::Tags->new(
     advisory     => 'clean',
     stik         => 'Movie',
     description  => 'test_description',
+    longdesc     => 'test_longdesc',
     TVNetwork    => 'test_TVNetwork',
     TVShowName   => 'test_TVShowName',
     TVEpisode    => 'test_TVEpisode',
@@ -78,10 +80,22 @@ ok( -e $tempfile );
 my $read_tags = $ap->read_tags($tempfile);
 is_deeply( $read_tags, $write_tags, 'read/write tags' );
 
+# remove tags, and test replace
+my $testfile2 = "$Bin/resources/Family-replace.mp4";
+copy( $testfile, $testfile2 );
+$write_tags = AtomicParsley::Command::Tags->new(
+    title => '',
+    genre => undef,
+);
+my $tempfile2 = $ap->write_tags( $testfile2, $write_tags, 1 );
+is( $tempfile2, $testfile2 );
+$read_tags = $ap->read_tags($tempfile2);
+is( $read_tags->title, undef,    'removed' );
+is( $read_tags->genre, 'Comedy', 'kept' );
+
 $ap->read_tags('/does/not/exist');
 ok( !$ap->{success} );
-like( $ap->{stdout_buf}[0],
-    qr/AP error trying to fopen: No such file or directory/ );
+like( $ap->{stdout_buf}[0], qr/No such file or directory/ );
 
 isnt(
     exception {
@@ -92,3 +106,5 @@ isnt(
 
 unlink $tempfile;
 ok( !-e $tempfile );
+unlink $tempfile2;
+ok( !-e $tempfile2 );

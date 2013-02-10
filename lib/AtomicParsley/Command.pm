@@ -4,13 +4,13 @@ use warnings;
 
 package AtomicParsley::Command;
 {
-  $AtomicParsley::Command::VERSION = '1.120620';
+  $AtomicParsley::Command::VERSION = '1.130410';
 }
 
 # ABSTRACT: Interface to the Atomic Parsley command
 
 use AtomicParsley::Command::Tags;
-use IPC::Cmd '0.72', ();
+use IPC::Cmd '0.76', ();
 use File::Spec '3.33';
 use File::Copy;
 
@@ -37,6 +37,7 @@ sub new {
 sub read_tags {
     my ( $self, $path ) = @_;
 
+    $path = File::Spec->rel2abs($path);
     my ( $volume, $directories, $file ) = File::Spec->splitpath($path);
 
     my $cmd = [ $self->{ap}, $path, '-t' ];
@@ -79,6 +80,8 @@ sub write_tags {
 sub _run {
     my ( $self, $cmd ) = @_;
 
+    local $IPC::Cmd::ALLOW_NULL_ARGS = 1;
+
     my ( $success, $error_message, $full_buf, $stdout_buf, $stderr_buf ) =
       IPC::Cmd::run( command => $cmd, verbose => $self->{'verbose'} );
 
@@ -115,6 +118,9 @@ sub _parse_tags {
                 when (/cmt$/) {
                     $tags{'comment'} = $value;
                 }
+                when ('cpil') {
+                    $tags{'compilation'} = $value;
+                }
                 when ('cprt') {
                     $tags{'copyright'} = $value;
                 }
@@ -123,6 +129,9 @@ sub _parse_tags {
                 }
                 when ('desc') {
                     $tags{'description'} = $value;
+                }
+                when ('ldes') {
+                    $tags{'longdesc'} = $value;
                 }
                 when ('disk') {
                     $value =~ s/ of /\//;
@@ -228,7 +237,7 @@ AtomicParsley::Command - Interface to the Atomic Parsley command
 
 =head1 VERSION
 
-version 1.120620
+version 1.130410
 
 =head1 SYNOPSIS
 
@@ -247,7 +256,7 @@ version 1.120620
 
 This is an interface to the AtomicParsley command.
 
-AtomicParsley is a lightweight command line program for reading, parsing and setting metadata into MPEG-4 files. For more information see http://atomicparsley.sourceforge.net/.
+AtomicParsley is a lightweight command line program for reading, parsing and setting metadata into MPEG-4 files. For more information see https://bitbucket.org/wez/atomicparsley.
 
 =head1 METHODS
 
@@ -307,6 +316,10 @@ The following tags have not been implemented:
 
 =back
 
+=head1 UPDATING
+
+If you are updating, ensure you use the latest version of AtomicParsley from https://bitbucket.org/wez/atomicparsley.
+
 =head1 SEE ALSO
 
 =over 4
@@ -323,7 +336,7 @@ Andrew Jones <andrew@arjones.co.uk>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Andrew Jones.
+This software is copyright (c) 2013 by Andrew Jones.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

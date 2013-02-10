@@ -9,9 +9,11 @@ README
 dist.ini
 lib/AtomicParsley/Command.pm
 lib/AtomicParsley/Command/Tags.pm
+t/00-compile.t
 t/05_tags.t
 t/10_command.t
 t/author-critic.t
+t/author-pod-spell.t
 t/release-kwalitee.t
 t/release-no-smart-comments.t
 t/release-no-tabs.t
