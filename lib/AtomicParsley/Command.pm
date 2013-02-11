@@ -4,7 +4,7 @@ use warnings;
 
 package AtomicParsley::Command;
 {
-  $AtomicParsley::Command::VERSION = '1.130410';
+  $AtomicParsley::Command::VERSION = '1.130420';
 }
 
 # ABSTRACT: Interface to the Atomic Parsley command
@@ -98,10 +98,12 @@ sub _parse_tags {
     my ( $self, $output ) = @_;
 
     my %tags;
+    my $intag;
     for my $line ( split( /\n/, $output ) ) {
         if ( $line =~ /^Atom \"(.+)\" contains: (.*)$/ ) {
             my $key   = $1;
             my $value = $2;
+
             given ($key) {
                 when (/alb$/) {
                     $tags{'album'} = $value;
@@ -116,22 +118,30 @@ sub _parse_tags {
                     $tags{'category'} = $value;
                 }
                 when (/cmt$/) {
-                    $tags{'comment'} = $value;
+                    my $tag = 'comment';
+                    $intag = $tag;
+                    $tags{$tag} = $value;
                 }
                 when ('cpil') {
                     $tags{'compilation'} = $value;
                 }
                 when ('cprt') {
-                    $tags{'copyright'} = $value;
+                    my $tag = 'copyright';
+                    $intag = $tag;
+                    $tags{$tag} = $value;
                 }
                 when (/day$/) {
                     $tags{'year'} = $value;
                 }
                 when ('desc') {
-                    $tags{'description'} = $value;
+                    my $tag = 'description';
+                    $intag = $tag;
+                    $tags{$tag} = $value;
                 }
                 when ('ldes') {
-                    $tags{'longdesc'} = $value;
+                    my $tag = 'longdesc';
+                    $intag = $tag;
+                    $tags{$tag} = $value;
                 }
                 when ('disk') {
                     $value =~ s/ of /\//;
@@ -188,6 +198,9 @@ sub _parse_tags {
                 }
             }
         }
+        elsif ( $intag && defined $tags{$intag} ) {
+            $tags{$intag} .= "\n$line";
+        }
     }
 
     return AtomicParsley::Command::Tags->new(%tags);
@@ -237,7 +250,7 @@ AtomicParsley::Command - Interface to the Atomic Parsley command
 
 =head1 VERSION
 
-version 1.130410
+version 1.130420
 
 =head1 SYNOPSIS
 

@@ -30,4 +30,4 @@ resources:
   bugtracker: https://github.com/andrewrjones/perl5-AtomicParsley-Command/issues
   homepage: https://github.com/andrewrjones/perl5-AtomicParsley-Command
   repository: https://github.com/andrewrjones/perl5-AtomicParsley-Command.git
-version: 1.130410
+version: 1.130420

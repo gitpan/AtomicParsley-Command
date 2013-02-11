@@ -3,7 +3,7 @@ use warnings;
 
 package AtomicParsley::Command::Tags;
 {
-  $AtomicParsley::Command::Tags::VERSION = '1.130410';
+  $AtomicParsley::Command::Tags::VERSION = '1.130420';
 }
 
 # ABSTRACT: represent the mp4 metatags
@@ -71,7 +71,7 @@ AtomicParsley::Command::Tags - represent the mp4 metatags
 
 =head1 VERSION
 
-version 1.130410
+version 1.130420
 
 =head1 SYNOPSIS
 
